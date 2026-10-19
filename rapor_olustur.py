@@ -153,7 +153,7 @@ p("Ganyan oranı ile gerçek kazanma oranı karşılaştırıldığında (Şekil
   "sıraladığı görülür: oran arttıkça kazanma oranı monoton biçimde düşer. Oranın ima ettiği olasılık "
   "(1/oran) her aralıkta gerçek orandan biraz yüksektir; bu fark bahis şirketinin komisyonudur (~%18). "
   "En düşük oranlı at (favori) yarışların %29,8'ini kazanmıştır; bu değer modeller için asıl çıtadır.")
-figure("eda_odds_calibration", "Şekil 1 – Ganyan oranı aralığına göre gerçek ve ima edilen kazanma oranı", 13)
+figure("eda_odds_calibration", "Şekil 1 – Ganyan oranı aralığına göre gerçek ve ima edilen kazanma oranı", 12)
 p("Kulvar etkisi (Şekil 2) özellikle dar virajlı Happy Valley pistinde belirgindir: iç kulvardan (1) "
   "çıkan atların kazanma oranı %11,9 iken 12. kulvarda %5,4'e düşer. Sha Tin'de etki daha zayıftır. "
   "Spearman korelasyonlarına göre bitiş yeriyle en güçlü ilişki ganyan oranındadır (ρ = 0,51); kulvar "
@@ -161,7 +161,7 @@ p("Kulvar etkisi (Şekil 2) özellikle dar virajlı Happy Valley pistinde belirg
   "ilişkisiz olmasıdır (ρ ≈ 0). Bunun nedeni handikap sisteminin yüksek puanlı atlara daha fazla kilo "
   "yükleyerek yarışı dengelemesidir. Bu nedenle puanın tek başına değil, aynı yarıştaki rakiplere göre "
   "(göreli) kullanılması gerektiği sonucuna varılmıştır.")
-figure("eda_draw", "Şekil 2 – Kulvar numarasına göre kazanma oranı (HV: Happy Valley, ST: Sha Tin)", 12)
+figure("eda_draw", "Şekil 2 – Kulvar numarasına göre kazanma oranı (HV: Happy Valley, ST: Sha Tin)", 10.5)
 
 doc.add_heading("3.2 Ön işleme ve özellik mühendisliği", 2)
 bullet(" Yarış sırasında oluşan bilgiler (ara sıralamalar, ara zamanlar, bitiş zamanı, "
@@ -212,7 +212,7 @@ p("LambdaRank modeli learning_rate = 0,03, num_leaves = 31, min_child_samples = 
   "plato yaptığı görülmektedir. Bu durum verideki gürültünün yüksek olduğunu ve modelin kolayca aşırı "
   "öğrenebileceğini gösterir. Hiperparametre seçimi yalnızca doğrulama seti kullanılarak yapılmış, test "
   "seti yalnızca son değerlendirmede kullanılmıştır.")
-figure("lgbm_learning_curve", "Şekil 3 – LambdaRank öğrenme eğrileri (kesikli çizgi: erken durdurma noktası)", 14)
+figure("lgbm_learning_curve", "Şekil 3 – LambdaRank öğrenme eğrileri (kesikli çizgi: erken durdurma noktası)", 12)
 
 # ---------------------------------------------------------------- 6
 doc.add_heading("6. Değerlendirme Sonuçları", 1)
@@ -229,7 +229,7 @@ for c in ["NDCG@3", "Spearman ρ", "MAE (sıra)", "ROC-AUC"]:
 table(show, [4.2, 2.0, 1.9, 1.6, 1.6, 1.8, 1.7, 1.7], highlight_row="LightGBM LambdaRank")
 p("Tablo 1 – Test seti sonuçları (882 yarış, 11.062 koşu).", italic=True,
   align=WD_ALIGN_PARAGRAPH.CENTER, size=9)
-figure("model_comparison", "Şekil 4 – Modellerin test setindeki sıralama başarısı", 14.5)
+figure("model_comparison", "Şekil 4 – Modellerin test setindeki sıralama başarısı", 12.5)
 
 lg, mk, no = R.loc["LightGBM LambdaRank"], R.loc["Piyasa favorisi"], R.loc["LambdaRank (oransız)"]
 rnd = R.loc["Rastgele"]
@@ -243,7 +243,7 @@ p(f"Ganyan oranını kullanan üç model de piyasa favorisiyle hemen hemen aynı
   f"{no['Spearman ρ']:.2f} Spearman korelasyonu elde etmiştir. Bu, at/jokey/antrenör geçmişi ve yarış "
   f"koşullarından anlamlı bir sinyal öğrenildiğini gösterir (rastgeleye göre ≈"
   f"{no['Kazanan isabeti'] / rnd['Kazanan isabeti']:.1f} kat).")
-figure("confusion_matrices", "Şekil 5 – “Kazanır / Kazanmaz” karışıklık matrisleri (test seti)", 12.5)
+figure("confusion_matrices", "Şekil 5 – “Kazanır / Kazanmaz” karışıklık matrisleri (test seti)", 11)
 p(f"Karışıklık matrisinde her yarışta tam olarak bir at “Kazanır” olarak işaretlendiği için precision, "
   f"recall ve F1 değerleri kazanan isabetine eşittir (LambdaRank: {lg['F1 (kazanır)']:.3f}). At bazındaki "
   f"accuracy (%{lg['Accuracy (at bazında)'] * 100:.1f}) ise “Kazanmaz” sınıfının baskınlığından dolayı "
@@ -252,7 +252,7 @@ p(f"Karışıklık matrisinde her yarışta tam olarak bir at “Kazanır” ola
 
 # ---------------------------------------------------------------- 7
 doc.add_heading("7. Hata Analizi", 1)
-figure("feature_importance", "Şekil 6 – LambdaRank modelinde en önemli 20 özellik (bilgi kazancı)", 11)
+figure("feature_importance", "Şekil 6 – LambdaRank modelinde en önemli 20 özellik (bilgi kazancı)", 9)
 p("Özellik önemleri (Şekil 6), modelin kararlarının büyük ölçüde piyasa olasılığı ve ganyan oranına "
   "dayandığını gösterir. Geçmiş performans özellikleri (göreli ortalama bitiş yeri, jokey deneyimi, "
   "antrenör kazanma oranı), kulvar ve göreli kilo ise ikincil katkı sağlar. Ganyan oranı, kamuya açık "
@@ -299,6 +299,18 @@ bullet(" Optuna ile hiperparametre araması yapmak ve zaman serisi çapraz doğr
        "ile sonuçların kararlılığını ölçmek.", "Hiperparametre ve doğrulama:")
 bullet(" Daha güncel yarışları (ör. TJK verisi) ekleyerek modelin farklı pistlere "
        "genellenip genellenmediğini test etmek.", "Güncel veri:")
+
+# ---------------------------------------------------------------- 9
+doc.add_heading("9. Kod ve Tekrarlanabilirlik", 1)
+p("Projenin tüm kodu, çalıştırılmış notebook'u, grafikleri ve bu rapor GitHub deposunda yer almaktadır: "
+  "https://github.com/Elif-Yildiz/at-yarisi-siralama-tahmini", align=WD_ALIGN_PARAGRAPH.LEFT)
+bullet(" veri keşfi, ön işleme, modeller, değerlendirme ve hata analizinin tamamı (çıktılarıyla).",
+       "at_yarisi_siralama.ipynb:")
+bullet(" rapordaki tüm grafikler ve sonuç tabloları (model_results.csv, betting_roi.csv).", "figures/:")
+bullet(" veri seti lisans gereği depoya eklenmemiştir. Kaggle'dan indirilen races.csv ve runs.csv "
+       "dosyaları data/ klasörüne konularak notebook baştan çalıştırılabilir. Rastgelelik içeren "
+       "adımlarda sabit tohum (random_state = 42) kullanıldığından sonuçlar yeniden üretilebilir.",
+       "Veri:")
 
 cp = doc.core_properties
 cp.author = cp.last_modified_by = cp.comments = ""
