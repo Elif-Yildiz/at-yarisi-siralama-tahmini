@@ -1,0 +1,6 @@
+Model,Bahis sayısı,Kazanan,Toplam dönüş,ROI
+Piyasa favorisi,882,270,785.6,-0.10929705215419494
+Logistic Regression,882,262,760.2,-0.13809523809523816
+Random Forest,882,253,730.4,-0.17188208616780043
+LightGBM LambdaRank,882,254,736.7,-0.1647392290249433
+LambdaRank (oransız),882,212,751.4,-0.1480725623582767
